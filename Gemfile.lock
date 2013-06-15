@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/laurita/scluster.git
+  revision: 8792fef51bb7853adbffabc3542ff1779702e6b6
+  tag: 0.0.2
+  specs:
+    scluster (0.0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -129,6 +136,7 @@ DEPENDENCIES
   levenshtein-ffi
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
+  scluster (= 0.0.2)!
   sqlite3
   therubyracer
   twitter-bootstrap-rails (~> 2.2.7)

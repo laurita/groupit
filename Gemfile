@@ -5,11 +5,13 @@ gem 'levenshtein-ffi', :require => 'levenshtein'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails", "~> 2.2.7"
+gem 'scluster', '0.0.2', :git => 'git://github.com/laurita/scluster.git',
+  :tag => '0.0.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# gem 'sqlite3'
 
 
 # Gems used only for assets and not required

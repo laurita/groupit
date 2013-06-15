@@ -1,4 +1,5 @@
 <%= form_tag({:action => :cluster}, :multipart => true) do %>
-  <%= file_field_tag 'names'%>
-	<%= submit_tag "Do the shit", :class => "btn" %>
+	<%= label_tag("names", "Please upload CSV") %>
+  <%= file_field_tag "names"%>
+	<%= submit_tag "Process", :class => "btn" %>
 <% end %>
