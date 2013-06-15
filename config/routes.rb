@@ -1,4 +1,6 @@
 Groupit::Application.routes.draw do
+  get "clusterer/cluster"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
