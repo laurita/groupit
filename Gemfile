@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'levenshtein-ffi', :require => 'levenshtein'
+gem "therubyracer"
+gem "less-rails"
 gem "twitter-bootstrap-rails", "~> 2.2.7"
 
 # Bundle edge Rails instead:

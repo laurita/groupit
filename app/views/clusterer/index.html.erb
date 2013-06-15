@@ -1,0 +1,4 @@
+<%= form_tag({:action => :cluster}, :multipart => true) do %>
+  <%= file_field_tag 'names'%>
+	<%= submit_tag "Do the shit", :class => "btn" %>
+<% end %>

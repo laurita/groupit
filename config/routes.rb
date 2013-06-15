@@ -1,5 +1,7 @@
 Groupit::Application.routes.draw do
-  get "clusterer/cluster"
+  post "clusterer/cluster"
+  
+  root :to => "clusterer#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
