@@ -1,22 +1,24 @@
-<h3>Clusters</h3>
- 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Group</th>
-    <th>Predicted group</th>
-  </tr>
+<h3>Clustered data</h3>
 
-<% i, gid = 1, 1 %>
+<table id="cluster" class="table">
+  <thead>
+    <tr>
+      <th>Predicted group</th>
+      <th>Name</th>
+      <th>Group</th>
+    </tr>
+  </thead>
+  <tbody>
+<% gid = 1 %>
 <% @clusters.each do |cluster| %>
 	<% cluster.each do |c| %>
-  <tr class="cluster-<%= i %>">
-    <td><%= c[:name].force_encoding('UTF-8') %></td>
-    <td><%= c[:group].force_encoding('UTF-8') %></td>
-    <td><%= gid %></td>
-  </tr>
+    <tr>
+      <td>Group <%= gid %></td>
+      <td><%= c[:name].force_encoding('UTF-8') %></td>
+      <td><%= c[:group].force_encoding('UTF-8') %></td>
+    </tr>
 	<% end %>
-	<% i = 1 - i %>
 	<% gid += 1 %>
 <% end %>
+  </tbody>
 </table>

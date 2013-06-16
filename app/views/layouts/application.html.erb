@@ -35,34 +35,42 @@
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
+    <div id="wrap">
 
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">Groupit</a>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">Groupit</a>
+          </div>
         </div>
-      </div>
+      </div> <!-- /navbar -->
+
+      <div class="container">
+          <div class="row">
+            <div class="span9">
+              <%= bootstrap_flash %>
+              <%= yield %>
+            </div>
+          </div>
+          <div id="push"></div>
+      </div> <!-- /container -->
+
     </div>
 
-    <div class="container">
-        <div class="row">
-          <div class="span9">
-            <%= bootstrap_flash %>
-            <%= yield %>
-          </div>
-          
-        </div><!--/row-->
-
-      <footer>
-        <p>&copy; <a href="mailto:laura.bledaite@gmail.com">Laura Blėdaitė</a> 2013</p>
-      </footer>
-
-    </div> <!-- /container -->
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">
+          <i class="icon-user"></i> Laura Blėdaitė
+          <i class="icon-envelope"></i> <%= mail_to "laura.bledaite@gmail.com" %>
+          <i class="icon-file"></i> <%= link_to "Github", "https://github.com/laurita/groupit" %>
+        </p>
+      </div>
+    </div>
 
     <!-- Javascripts
     ================================================== -->

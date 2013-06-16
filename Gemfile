@@ -7,6 +7,7 @@ gem "less-rails"
 gem "twitter-bootstrap-rails", "~> 2.2.7"
 gem 'scluster', '0.0.3', :git => 'git://github.com/laurita/scluster.git',
   :tag => '0.0.3'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

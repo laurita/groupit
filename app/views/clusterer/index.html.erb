@@ -1,5 +1,10 @@
+<h3>Upload data</h3>
+
 <%= form_tag({:action => :cluster}, :multipart => true) do %>
-	<%= label_tag("names", "Please upload CSV") %>
+	<%= label_tag("names", "Please select CSV file") %>
   <%= file_field_tag "names"%>
-	<%= submit_tag "Process", :class => "btn" %>
+  <span class="help-block">
+    CSV structure, e.g. <i>"company name";"group"</i>
+  </span>
+	<%= submit_tag "Submit", :class => "btn" %>
 <% end %>
