@@ -13,7 +13,7 @@
 <% @clusters.each do |cluster| %>
 	<% cluster.each do |c| %>
     <tr>
-      <td>Group <%= gid %></td>
+      <td><%= c[:predicted_group].force_encoding('UTF-8') %></td>
       <td><%= c[:name].force_encoding('UTF-8') %></td>
       <td><%= c[:group].force_encoding('UTF-8') %></td>
     </tr>

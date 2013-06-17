@@ -59,6 +59,56 @@ module ClusterHelper
     return names.partition { |n| n[:val] =~ /[A-Z][a-z]+/}
   end
   
+  # Predict the group name based on the longest common
+  # substring of the cleaned names of all the points
+  # in the cluster. 
+  def predict_group_name(cluster)
+    first_val = cluster[0][:val]
+    # find longest common substring
+    group_name = cluster.inject(first_val) do |intersection, point|
+      find_longest_common_substring(intersection, point[:val])
+    end
+    # take the longest word possibly joined with '&' or '-'
+    if (group_name != '')
+      group_name = group_name.scan(/[[:alnum:]|&|-[:alnum]]+/).sort_by(&:length).last
+    else
+      puts group_name.class
+      group_name = 'Person'
+    end
+    group_name
+  end
+  
+  # Finds the longest common substring between twp strings.
+  # Taken from
+  # http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Longest_common_substring#Ruby
+  # * *Args*    :
+  #   - +s1+    -> string
+  #   - +s2+    -> string
+  # * *Returns* :
+  #   - longest common substring
+  def find_longest_common_substring(s1, s2)
+      if (s1 == "" || s2 == "")
+        return ""
+      end
+      m = Array.new(s1.length){ [0] * s2.length }
+      longest_length, longest_end_pos = 0,0
+      (0 .. s1.length - 1).each do |x|
+        (0 .. s2.length - 1).each do |y|
+          if s1[x] == s2[y]
+            m[x][y] = 1
+            if (x > 0 && y > 0)
+              m[x][y] += m[x-1][y-1]
+            end
+            if m[x][y] > longest_length
+              longest_length = m[x][y]
+              longest_end_pos = x
+            end
+          end
+        end
+      end
+      return s1[longest_end_pos - longest_length + 1 .. longest_end_pos]
+    end
+  
   # Separates, cleans and clusters the names
   # based on their Levenshtein distance.
   # * *Args*    :
@@ -90,9 +140,20 @@ class ClustererController < ApplicationController
         data = params[:names].read
         names = ClusterHelper.parse_csv(data)
         @clusters = ClusterHelper.cluster(names)
+        puts @clusters.inspect
+        @clusters.each do |cluster|
+          predicted_group_name = predict_group_name(cluster)
+          puts cluster
+          puts "predicted group name" 
+          puts predicted_group_name
+          cluster.each do |point|
+            point[:predicted_group] = predicted_group_name
+          end
+        end
     else
         flash.now[:error] = "Please select file"
         render :index
     end
   end
+
 end
